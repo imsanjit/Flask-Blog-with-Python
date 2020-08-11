@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+<title>{{params['about_meta_title']}}</title>
+  <meta name="description" content="{{params['about_meta_description']}}">
+{% endblock meta %}
+
+
+{% block body %}
+
+
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/about-bg.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>500 Internal Server Error</h1>
+            <span class="subheading">Something has gone wrong</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+  </div>
+
+  {% endblock %}

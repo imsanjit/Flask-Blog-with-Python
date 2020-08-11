@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Admin Panel</h1>
+            <span class="subheading">Manage your Blog Posts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 mx-auto">
+
+      		{% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          {% for category, msg in messages %}
+          <div class="alert alert-{{category}}">
+          {{ msg }}
+          </div>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+
+      	<h3>Basic Action</h3>
+      	<a href="/edit/0"><button class="btn btn-primary">Add New Post</button></a>
+      	<a href="/logout"><button class="btn btn-primary">Logout</button></a>
+      	<hr>
+      	<h3>Upload A Image File</h3>
+      
+      	<form action="/uploader" method="post" enctype="multipart/form-data">
+      		<input type="file" name="file1">
+      		<button type="submit" class="btn btn-primary">Upload</button>
+      	</form>
+      	<hr>
+
+<!-- Todo: Fetch it using for loop from the database -->
+<h3>welcome to {{params['blog_name']}}</h3>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Sno</th>
+      <th scope="col">Post Title</th>
+      <th scope="col">Post URL</th>
+      <th scope="col">Posted Date</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  	{% for post in post %}
+
+    <tr>
+      <th scope="row">{{post[0]}}</th>
+      <td>{{post[1]}}</td>
+      <td>{{post[2]}}</td>
+      <td>{{post[4]}}</td>
+      <td><a href="/edit/{{post[0]}}"><button class="btn btn-primary">Edit</button></a></td>
+      <td><a href="/delete/{{post[0]}}"><button class="btn btn-primary">Delete</button></a></td>
+    </tr>
+    
+    {% endfor %}
+  </tbody>
+</table>
+ 
+
+      </div>
+    </div>
+  </div>
+
+
+  {% endblock %}

@@ -1,0 +1,31 @@
+{
+  "parameters":
+  {
+    "local_server": "True",
+    "MYSQL_HOST": "MySQL Host Name",
+    "MYSQL_USER": "MySQL User Name",
+    "MYSQL_PASSWORD": "MySQL password",
+    "MYSQL_DB": "MySQL Database Name",
+    "fb_url": "https://www.facebook.com/xyz",
+    "tw_url": "https://twitter.com/xyz",
+    "gh_url": "https://github.com/xyz",
+    "blog_name": "Your Blog Name",
+    "blog_tagline": "Your Blog Tag Line",
+    "gmail_user": "gmail address where to get mail from contact page.",
+    "gmail_password": "gmail password for the same",
+    "about_text": "About page content",
+    "no_of_posts": 2,
+    "login_img": "logo_login.svg",
+    "favicons_icon": "favicon.ico",
+    "admin_user": "XXXXXXX",
+    "admin_password": "XXXXXXX",
+    "upload_location": "File path to save uploaded images.",
+    "home_meta_title": "Home Page meta title",
+    "home_meta_description": "Home Page meta description",
+    "about_meta_title": "About Page meta title",
+    "about_meta_description": "Contact Page meta title",
+    "contact_meta_title": "9to6coding - Contact Me",
+    "contact_meta_description": "Contact Page meta description"
+  }
+
+}

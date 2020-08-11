@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+<!-- metas starts from here -->
+{% block meta %}
+{% if meta_title|length %}
+  <title>{{post[6]}}</title>
+{% else %}
+  <title>{{post[1]}}</title>
+{% endif %}
+
+{% if meta_description|length %}
+  <meta name="description" content="{{post[7]}}" />
+{% else %}
+  <meta name="description" content="{{post[3][0:100]}}" />
+{% endif %}
+
+<link rel="canonical" href="/post/{{post[2]}}"/>
+{% endblock meta %}
+
+<!-- metas ends here -->
+
+
+<!-- body starts from here -->
+{% block body %}
+
+  <!-- Page Header -->
+  {% set img_fname='img/' + post[5] %}
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename=img_fname)}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>{{post[1]}}</h1>
+            <span class="meta">Posted by Admin
+              on {{post[4].strftime('%B %d, %Y')}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-md-10 mx-auto">
+          {{post[3]|safe}}
+        </div>
+      </div>
+    </div>
+  </article>
+  {% endblock %}
+  <!-- body ends here -->

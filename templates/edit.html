@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Admin Panel</h1>
+            <span class="subheading">Manage your Blog Posts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 mx-auto">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          {% for category, msg in messages %}
+          <div class="alert alert-{{category}}">
+          {{ msg }}
+          </div>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+
+        <h3>Basic Action</h3>
+        <a href="/dashboard"><button class="btn btn-primary">Dashboard</button></a>
+        <a href="/logout"><button class="btn btn-primary">Logout</button></a>
+        <hr>
+
+<!-- Todo: Fetch it using for loop from the database -->
+<h3>Add/modify Post</h3>
+<hr>
+ <form name="sentMessage" id="contactForm" action = "/edit/{{sno}}" method="post" novalidate>
+    <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Slug or Post URL</label>
+                <input type="text" class="form-control" placeholder="slug or post url" id="slug" name="slug" required data-validation-required-message="Please enter your email address." value="{{post[2]}}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+              <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Meta Title</label>
+                <input type="text" class="form-control" placeholder="Meta Title" id="meta_title" name="meta_title" required data-validation-required-message="Please enter your email address." value="{{post[6]}}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Meta Description</label>
+                <input type="text" class="form-control" placeholder="Meta Description" id="meta_description" name="meta_description" required data-validation-required-message="Please enter your email address." value="{{post[7]}}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Title</label>
+                <input type="text" class="form-control" placeholder="Title" id="title" name='title' required data-validation-required-message="Please enter your name." value="{{post[1]}}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+          
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Content</label>
+                <textarea rows="5" class="form-control" placeholder="Content" name = "content" id="content">{{post[3]}}</textarea>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Image File</label>
+                <input class="form-control" placeholder="Image File" name = "img_file" id="img_file" value="{{post[5]}}"></input>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <br>
+            <div id="success"></div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+            </div>
+          </form>
+
+ 
+
+      </div>
+    </div>
+  </div>
+
+
+
+  {% endblock %}
